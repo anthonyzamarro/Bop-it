@@ -7,21 +7,28 @@ class Instructions extends Component {
       message: ''
     }
     this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    this.exit = this.exit.bind(this);
   }
   openModal() {
     this.setState({
-      message: <div className="modal-container">This is how we do it <span className="exit-modal" onClick={this.closeModal}>X</span></div>
+      message: <div className="modal-container">
+        <span className="exit" onClick={this.exit}>X</span>
+        <h3>How to Play</h3>
+        <p>Hit the correct key before time runs out!</p>
+        <p>Press the ⟵ arrow key to pull it!</p>
+        <p>Press the ↓ arrow key to bop it!</p>
+        <p>Press the ⟶ arrow key to twist it!</p>
+      </div>
     });
   }
-  closeModal() {
+  exit() {
     this.setState({
       message: ""
     });
   }
   render() {
     return (
-      <div>
+      <div className="instructions-container">
         <input type="button" value="How to Play" onClick={this.openModal}/>
         <div className="modal">
           {this.state.message}
